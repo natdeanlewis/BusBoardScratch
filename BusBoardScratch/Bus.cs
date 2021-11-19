@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace BusBoardScratch
 {
@@ -10,12 +9,13 @@ namespace BusBoardScratch
         public string destinationName { get; set; }
         public int timeToStation { get; set; }
         public DateTime timeToLive { get; set; }
-        
+
 
         public override string ToString()
         {
             // return expectedArrival.ToString(CultureInfo.CurrentCulture);
-            return $"The number {lineName} to {destinationName} is expected to arrive at {expectedArrival.ToShortTimeString()}.";
+            return
+                $"The number {lineName} to {destinationName} is expected to arrive at {expectedArrival.ToShortTimeString()}.";
         }
     }
 }
