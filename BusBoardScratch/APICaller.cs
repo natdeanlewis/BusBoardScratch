@@ -10,7 +10,7 @@ namespace BusBoardScratch
 {
     public class APICaller
     {
-        public static void GetArrivals(string stop)
+        public static List<Bus> GetArrivals(string stop)
         {
             var client = new RestClient("https://api.tfl.gov.uk/");
             // client.Authenticator = new HttpBasicAuthenticator("username", "password");
@@ -20,12 +20,8 @@ namespace BusBoardScratch
             var response = client.Get(request);
 
             var buses = JsonSerializer.Deserialize<List<Bus>>(response.Content);
-            
-            foreach (var bus in buses)
-            {
-                Console.WriteLine(bus);
 
-            }
+            return buses.OrderBy(b => b.timeToStation).ToList().GetRange(0, 5);
         }
     }
 }
