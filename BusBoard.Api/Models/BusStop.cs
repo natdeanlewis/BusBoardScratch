@@ -4,12 +4,11 @@ namespace BusBoardScratch
 {
     public class BusStop
     {
+        public List<Bus> arrivals;
         public string naptanId { get; set; }
         public string stopLetter { get; set; }
         public string commonName { get; set; }
         public float distance { get; set; }
-
-        public List<Bus> arrivals;
 
         public override string ToString()
         {
@@ -17,6 +16,5 @@ namespace BusBoardScratch
                 return $"{commonName} is {(int) distance}m away.";
             return $"{commonName} (stop {stopLetter}) is {(int) distance}m away.";
         }
-
     }
 }

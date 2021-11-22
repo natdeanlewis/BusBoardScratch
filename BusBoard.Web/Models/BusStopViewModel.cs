@@ -7,8 +7,8 @@ namespace BusBoard.Web.Models
     {
         public List<Bus> Arrivals;
         public string CommonName;
-        public string StopLetter;
         public float Distance;
+        public string StopLetter;
 
         public BusStopViewModel(BusStop bs)
         {
@@ -16,7 +16,6 @@ namespace BusBoard.Web.Models
             CommonName = bs.commonName;
             StopLetter = bs.stopLetter;
             Distance = bs.distance;
-            
         }
     }
 }

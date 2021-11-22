@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BusBoard.Api\BusBoard.Api.csproj" />
+        <ProjectReference Include="..\BusBoard.Api\BusBoard.Api.csproj"/>
     </ItemGroup>
 
 </Project>

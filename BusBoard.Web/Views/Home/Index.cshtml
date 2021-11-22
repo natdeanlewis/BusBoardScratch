@@ -4,22 +4,28 @@
 @model List<BusStopViewModel>;
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Welcome to BusBoard</h1>
     <form action="/" method="GET">
-        <input type="text" name="postCode" placeholder="postcode"/>
+        <input type="text" name="postCode" placeholder="Postcode"/>
         <input type="submit" value="Submit"/>
     </form>
-    
-@foreach (var viewModel in Model)
-{
-    <p>@viewModel.CommonName is @viewModel.Distance m away </p>
-    <p>Here are the next 5 arrivals to this stop:</p>
-    <ul>
-    @foreach (var arrival in viewModel.Arrivals)
+    <br></br>
+    Here are the closest bus stops to your postcode:
+    <br></br>
+    @foreach (var viewModel in Model)
     {
-        <li>@arrival</li>
-    }
-    </ul>
+        @if (@String.IsNullOrEmpty(viewModel.StopLetter))
+        {
+            <p>@viewModel.CommonName is @((int) viewModel.Distance)m away </p>
+        } <p>@viewModel.CommonName (Stop @viewModel.StopLetter) is @((int) viewModel.Distance)m away </p>
+        
+    <p>Here are the upcoming arrivals to this stop:</p>
+        <ul>
+            @foreach (var arrival in viewModel.Arrivals)
+            {
+                <li>@arrival</li>
+            }
+        </ul>
     }
 
-    </div>
+</div>
