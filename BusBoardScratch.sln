@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusBoardScratch", "BusBoardScratch\BusBoardScratch.csproj", "{A4942555-0F7A-401A-9B93-3A5207E592DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusBoardApi", "BusBoardApi\BusBoardApi.csproj", "{B6B391D9-B2B0-48F9-8405-17532ED641C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusBoard.Api", "BusBoard.Api\BusBoard.Api.csproj", "{B6B391D9-B2B0-48F9-8405-17532ED641C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusBoard.Web", "BusBoard.Web\BusBoard.Web.csproj", "{376D0263-5B3D-49AC-88E7-4C8EDFA9F6A8}"
 EndProject

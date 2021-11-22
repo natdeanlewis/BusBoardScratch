@@ -10,8 +10,8 @@
         public override string ToString()
         {
             if (string.IsNullOrEmpty(stopLetter))
-                return $"{commonName} is {(int)distance}m away.";
-            return $"{commonName} (stop {stopLetter}) is {(int)distance}m away.";
+                return $"{commonName} is {(int) distance}m away.";
+            return $"{commonName} (stop {stopLetter}) is {(int) distance}m away.";
         }
     }
 }

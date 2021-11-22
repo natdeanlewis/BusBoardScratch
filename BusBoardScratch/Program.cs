@@ -6,8 +6,6 @@ namespace BusBoardScratch
     {
         private static void Main(string[] args)
         {
-            
-
             var postcodeClient = new PostcodeApiCaller();
 
             var latLong = postcodeClient.GetLatLong("NW51PB");
@@ -20,7 +18,7 @@ namespace BusBoardScratch
             {
                 Console.WriteLine();
                 Console.WriteLine(stop);
-                Console.WriteLine("The next 5 buses from this stop are:");
+                Console.WriteLine("Here are the next 5 buses from this stop:");
                 var nextFive = TflArrivalApiCaller.GetArrivals(stop.naptanId);
 
                 foreach (var bus in nextFive) Console.WriteLine(bus);
