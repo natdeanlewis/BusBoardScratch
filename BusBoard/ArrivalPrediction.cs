@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text.Json;
-using RestSharp;
-using System.Linq;
 
 namespace BusBoard
 {
-    public class Arrival
+    public class ArrivalPrediction
     {
         public DateTime expectedArrival { get; set; }
         public string lineName { get; set; }
@@ -17,8 +13,7 @@ namespace BusBoard
 
         public override string ToString()
         {
-            return $"{lineName} to {destinationName}: expected {expectedArrival.ToShortTimeString()}.";
+            return $"Expected {expectedArrival.ToShortTimeString()}: {lineName} to {destinationName}";
         }
-        
     }
 }
