@@ -6,7 +6,10 @@ namespace BusBoard
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var pc = new PostcodeClient();
+            var tfl = new TflClient();
+
+            tfl.GetStopCodes(pc.GetLatLong("NW5 1TL"));
         }
     }
 }
