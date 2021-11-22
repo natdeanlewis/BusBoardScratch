@@ -5,7 +5,7 @@ using RestSharp;
 
 namespace BusBoardScratch
 {
-    public static class TflApiCaller
+    public static class TflArrivalApiCaller
     {
         private static readonly RestClient Client = new("https://api.tfl.gov.uk/");
 

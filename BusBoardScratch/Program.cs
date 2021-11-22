@@ -6,11 +6,25 @@ namespace BusBoardScratch
     {
         private static void Main(string[] args)
         {
-            var nextFive = TflApiCaller.GetArrivals("490008660N");
-
-            foreach (var bus in nextFive) Console.WriteLine(bus);
             
-            Console.WriteLine(PostcodeApiCaller.GetLatLong("CB241AE"));
+
+            var postcodeClient = new PostcodeApiCaller();
+
+            var latLong = postcodeClient.GetLatLong("NW51PB");
+
+            var latLongClient = new TflLatLongApiCaller();
+
+            var places = latLongClient.GetStopcode(latLong.latitude.ToString(), latLong.longitude.ToString());
+
+            foreach (var stop in places)
+            {
+                Console.WriteLine();
+                Console.WriteLine(stop);
+                Console.WriteLine("The next 5 buses from this stop are:");
+                var nextFive = TflArrivalApiCaller.GetArrivals(stop.naptanId);
+
+                foreach (var bus in nextFive) Console.WriteLine(bus);
+            }
         }
     }
 }
