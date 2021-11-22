@@ -15,15 +15,14 @@ namespace BusBoardScratch
 
             var request =
                 new RestRequest(
-                    $"https://api.tfl.gov.uk/Place?type=NaptanPublicBusCoachTram&lat={lat}&lon={lon}&radius=200",
+                    $"Place?type=NaptanPublicBusCoachTram&lat={lat}&lon={lon}&radius=200",
                     DataFormat.Json);
 
             var response = Client.Get(request);
 
             var container = JsonSerializer.Deserialize<BusStopContainer>(response.Content);
 
-            // return buses.OrderBy(b => b.timeToStation).ToList().GetRange(0, 5);
-            return container.places.OrderBy(b => b.distance).ToList().GetRange(0, 2);
+            return container.places.OrderBy(bs => bs.distance).ToList().GetRange(0, 2);
         }
     }
 }

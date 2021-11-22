@@ -1,5 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using BusBoard.Web.Models;
+using BusBoardScratch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -12,11 +15,34 @@ namespace BusBoard.Web.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-        }
 
-        public IActionResult Index()
+        }
+    
+        public IActionResult Index([FromQuery] string postCode)
         {
-            return View();
+            if (postCode == null)
+            {
+                postCode = "NW51PB";
+            }
+            
+            Console.WriteLine(postCode);
+            
+            var postcodeClient = new PostcodeApiCaller();
+
+            var latLong = postcodeClient.GetLatLong(postCode);
+            
+            var latLongClient = new TflLatLongApiCaller();
+
+            var places = latLongClient.GetStopcode(latLong.latitude.ToString(), latLong.longitude.ToString());
+
+            foreach (var stop in places)
+            {
+                stop.arrivals = TflArrivalApiCaller.GetArrivals(stop.naptanId);
+            }
+
+            var viewModels = places.Select(bs => new BusStopViewModel(bs)).ToList();
+            
+            return View(viewModels);
         }
 
         public IActionResult Privacy()

@@ -1,8 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<BusStopViewModel>;
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <form action="/" method="GET">
+        <input type="text" name="postCode" placeholder="postcode"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+@foreach (var viewModel in Model)
+{
+    <p>@viewModel.CommonName is @viewModel.Distance m away </p>
+    <p>Here are the next 5 arrivals to this stop:</p>
+    <ul>
+    @foreach (var arrival in viewModel.Arrivals)
+    {
+        <li>@arrival</li>
+    }
+    </ul>
+    }
+
+    </div>

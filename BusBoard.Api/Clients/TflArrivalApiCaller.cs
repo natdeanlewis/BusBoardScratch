@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using RestSharp;
@@ -19,7 +20,7 @@ namespace BusBoardScratch
 
             var buses = JsonSerializer.Deserialize<List<Bus>>(response.Content);
 
-            return buses.OrderBy(b => b.timeToStation).ToList().GetRange(0, 5);
+            return buses.OrderBy(b => b.timeToStation).ToList().GetRange(0, Math.Min(5, buses.Count));
         }
     }
 }
